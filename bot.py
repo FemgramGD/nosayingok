@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from datetime import timedelta
+from aiohttp import web
 import os
 import json
 
@@ -43,10 +44,22 @@ def format_duration(td):
     else:
         return f"{seconds // 3600} hour(s)"
 
+async def handle(request):
+    return web.Response(text="Bot is running")
+
+async def start_web_server():
+    app = web.Application()
+    app.router.add_get('/', handle)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', int(os.getenv('PORT', 8080)))
+    await site.start()
+
 @bot.event
 async def on_ready():
     print(f'{bot.user} is now online!')
     print(f'Bot ID: {bot.user.id}')
+    await start_web_server()
 
 @bot.event
 async def on_message(message):
