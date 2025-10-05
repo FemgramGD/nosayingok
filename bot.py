@@ -59,6 +59,7 @@ async def start_web_server():
 async def on_ready():
     print(f'{bot.user} is now online!')
     print(f'Bot ID: {bot.user.id}')
+    await bot.tree.sync()
     await start_web_server()
 
 @bot.event
