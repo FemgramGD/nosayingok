@@ -1,0 +1,2 @@
+# nosayingok
+idscrodbot
