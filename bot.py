@@ -91,7 +91,7 @@ async def on_message(message):
     duration = get_timeout_duration(count)
     
     try:
-        await user.timeout(duration, reason="Replied 'ok' to protected user")
+        await user.timeout(duration, reason="Replied 'ok' to mollopro.")
         
         try:
             msg = (
@@ -100,6 +100,7 @@ async def on_message(message):
                 f"for replying with 'ok' to <@{PROTECTED_USER}>.\n\n"
                 f"This is violation #{count + 1}. "
                 f"Future violations will result in longer timeouts (max 3 hours)."
+                f"sooooooo, if i were you id not."
             )
             await user.send(msg)
         except discord.Forbidden:
