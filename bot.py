@@ -24,11 +24,11 @@ def save_timeout_data(data):
 
 def get_timeout_duration(count):
     durations = [
+        timedelta(seconds=10),
+        timedelta(seconds=15),
         timedelta(seconds=30),
-        timedelta(minutes=5),
-        timedelta(minutes=30),
-        timedelta(hours=1),
-        timedelta(hours=3),
+        timedelta(minutes=1),
+        timedelta(minutes=3),
     ]
     
     if count >= len(durations):
